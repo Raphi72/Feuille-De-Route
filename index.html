@@ -567,6 +567,7 @@
                         navToggle.setAttribute('aria-expanded', !isExpanded);
                         navLinks.classList.toggle('nav-active');
                         navToggle.classList.toggle('toggle-active');
+                        document.body.classList.toggle('menu-open');
                     });
 
                     // Close menu when clicking a link
@@ -575,6 +576,7 @@
                             navLinks.classList.remove('nav-active');
                             navToggle.classList.remove('toggle-active');
                             navToggle.setAttribute('aria-expanded', 'false');
+                            document.body.classList.remove('menu-open');
                         });
                     });
                 }
