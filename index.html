@@ -29,6 +29,11 @@
             <img src="logo.png" alt="Logo Aivancity" class="nav-logo-img">
             <span>Aivancity Roadmap</span>
         </div>
+
+        <button class="nav-toggle" aria-label="Basculer le menu">
+            <span class="hamburger"></span>
+        </button>
+
         <div class="nav-links">
             <a href="#ancrage">Ancrage</a>
             <a href="#projection">Projection</a>
@@ -125,7 +130,9 @@
                         <span class="year-badge">Dans 3 ans</span>
                         <div class="timeline-card">
                             <h3>Stabilité & Réussite</h3>
-                            <p>3ème signifie la moitié du parcours. C'est le moment de de ne pas se relacher et de continuer à travailler dur pour atteindre mes objectifs. Voyager en Inde, préparation à l'alternance.</p>
+                            <p>3ème signifie la moitié du parcours. C'est le moment de de ne pas se relacher et de
+                                continuer à travailler dur pour atteindre mes objectifs. Voyager en Inde, préparation à
+                                l'alternance.</p>
                         </div>
                     </div>
                 </div>
@@ -137,7 +144,8 @@
                         <span class="year-badge">Dans 4 ans</span>
                         <div class="timeline-card">
                             <h3>Ouverture Internationale et professionnelle</h3>
-                            <p>Voyage aux États-Unis. Réussir mon alternance et m'intégrer dans le monde professionnel pour accquérir des compétences et de l'expérience.
+                            <p>Voyage aux États-Unis. Réussir mon alternance et m'intégrer dans le monde professionnel
+                                pour accquérir des compétences et de l'expérience.
                             </p>
                         </div>
                     </div>
@@ -152,7 +160,8 @@
                             <h3>Diplomation & Fierté</h3>
                             <p><strong>But ultime :</strong> Diplômé d’Aivancity.</p>
                             <p><strong>Compétences :</strong> TOEIC validé (excellent niveau).</p>
-                            <p><strong>Vision :</strong> Opportunités salariales concrètes dans un milieu qui me plait.</p>
+                            <p><strong>Vision :</strong> Opportunités salariales concrètes dans un milieu qui me plait.
+                            </p>
                         </div>
                     </div>
                 </div>
@@ -544,7 +553,30 @@
                         event.preventDefault();
                         closeBookModal();
                     }
-
                 });
+
+                // -------------------------------
+                //  MOBILE MENU
+                // -------------------------------
+                const navToggle = document.querySelector('.nav-toggle');
+                const navLinks = document.querySelector('.nav-links');
+
+                if (navToggle && navLinks) {
+                    navToggle.addEventListener('click', () => {
+                        const isExpanded = navToggle.getAttribute('aria-expanded') === 'true';
+                        navToggle.setAttribute('aria-expanded', !isExpanded);
+                        navLinks.classList.toggle('nav-active');
+                        navToggle.classList.toggle('toggle-active');
+                    });
+
+                    // Close menu when clicking a link
+                    navLinks.querySelectorAll('a').forEach(link => {
+                        link.addEventListener('click', () => {
+                            navLinks.classList.remove('nav-active');
+                            navToggle.classList.remove('toggle-active');
+                            navToggle.setAttribute('aria-expanded', 'false');
+                        });
+                    });
+                }
             });
         </script>
